@@ -112,14 +112,6 @@ else:
         }
     }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -185,9 +177,6 @@ LOGIN_URL = "/users/login/"
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
 # Sentry
-
-print(DEBUG)
-print(type(DEBUG))
 if not DEBUG:
     sentry_sdk.init(
         dsn=os.environ.get("SENTRY_URL"),
