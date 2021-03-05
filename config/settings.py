@@ -26,7 +26,7 @@ DEBUG = True  # 노란에러 메시지 보여줌
 # DEBUG = bool(os.environ.get("DEBUG"))
 
 # 추후 내 웹사이트 추가
-ALLOWED_HOSTS = [".elasticbeanstalk.com"]
+ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
 
 
 # Application definition
@@ -94,11 +94,7 @@ if DEBUG is False:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "HOST": os.environ.get("RDS_HOST"),
-            "NAME": os.environ.get("RDS_NAME"),
-            "USER": os.environ.get("RDS_USER"),
-            "PASSWORD": os.environ.get("RDS_PASSWORD"),
-            "PORT": "5432",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
 else:
@@ -106,9 +102,14 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "HOST": os.environ.get("RDS_HOST"),
+            "NAME": os.environ.get("RDS_NAME"),
+            "USER": os.environ.get("RDS_USER"),
+            "PASSWORD": os.environ.get("RDS_PASSWORD"),
+            "PORT": "5432",
         }
     }
+
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.sqlite3",
