@@ -19,13 +19,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "m98a4$1p=7!#fxqjuavo3l-u9i5a6*xk2qpz=qtwgz$*&j70#9"
+SECRET_KEY = os.environ.get("DJANGO_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True  # 노란에러 메시지 보여줌
-DEBUG = bool(os.environ.get("DEBUG"))
+DEBUG = True  # 노란에러 메시지 보여줌
+# DEBUG = bool(os.environ.get("DEBUG"))
 
-ALLOWED_HOSTS = []
+# 추후 내 웹사이트 추가
+ALLOWED_HOSTS = [".elasticbeanstalk.com"]
 
 
 # Application definition
@@ -88,7 +89,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG:
+if DEBUG is False:
 
     DATABASES = {
         "default": {
