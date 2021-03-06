@@ -10,8 +10,9 @@ django-countries = "*"
 django-seed = "*"
 django-dotenv = "*"
 requests = "*"
-pipenv-to-requirements = "*"
 sentry-sdk = "*"
+django-storages = "*"
+pipenv-to-requirements = "*"
 
 [dev-packages]
 black = "*"
