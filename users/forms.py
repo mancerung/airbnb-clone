@@ -4,7 +4,8 @@ from . import models
 
 class LoginForm(forms.Form):
 
-    email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email"}))
+    # email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email"}))
+    email = forms.CharField(widget=forms.CharField(attrs={"placeholder": "Email"}))
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "Password"})
     )
